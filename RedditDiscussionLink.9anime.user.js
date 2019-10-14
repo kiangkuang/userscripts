@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Reddit Discussion Link on 9anime
 // @namespace    https://github.com/kiangkuang
-// @version      0.2
+// @version      0.3
 // @description  Adds a link to Reddit discussion threads on 9anime video pages
 // @homepage     https://github.com/kiangkuang/userscripts
 // @supportURL   https://github.com/kiangkuang/userscripts/issues
