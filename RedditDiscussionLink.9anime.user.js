@@ -8,8 +8,7 @@
 // @updateURL    https://github.com/kiangkuang/userscripts/raw/master/RedditDiscussionLink.9anime.user.js
 // @downloadURL  https://github.com/kiangkuang/userscripts/raw/master/RedditDiscussionLink.9anime.user.js
 // @author       Kiang Kuang
-// @match        *.9anime.to/watch/*
-// @match        *.9anime.ru/watch/*
+// @include      *.9anime.*/watch/*
 // @grant        none
 // ==/UserScript==
 
