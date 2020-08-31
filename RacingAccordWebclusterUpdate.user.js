@@ -26,8 +26,18 @@
         div.appendChild(createProjectRadio(atob("Q2VudGF1cg=="))); // desktop
         div.appendChild(createProjectRadio(atob("Q2hpcm9u"))); // mobile
 
+        var link = document.createElement("a");
+        link.href = atob("aHR0cHM6Ly9pcm9ubWFuLmF0bGFzc2lhbi5uZXQvd2lraS9zcGFjZXMvcmFjaW5nL3BhZ2VzLzcyNjIzNzkyNC9VcGRhdGUrQ2VudGF1citDaGlyb24rV2ViK0NsdXN0ZXI=");
+        link.target = "_blank";
+        link.textContent = "Confluence";
+
+        var span = document.createElement("span");
+        span.appendChild(document.createTextNode("Manual Tool: "))
+        span.appendChild(link);
+
         var controls = document.getElementById("addConfig").parentNode;
         controls.appendChild(div);
+        controls.appendChild(span);
     };
 })();
 
