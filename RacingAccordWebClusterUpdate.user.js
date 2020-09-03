@@ -1,15 +1,16 @@
 // ==UserScript==
-// @name         Racing Accord Webcluster Update
+// @name         Racing Accord Web Cluster Update
 // @namespace    https://github.com/kiangkuang
-// @version      0.1
+// @version      0.2
 // @description  Edits webcluster.config for you!
 // @homepage     https://github.com/kiangkuang/userscripts
 // @supportURL   https://github.com/kiangkuang/userscripts/issues
-// @updateURL    https://github.com/kiangkuang/userscripts/raw/master/RacingAccordWebclusterUpdate.user.js
-// @downloadURL  https://github.com/kiangkuang/userscripts/raw/master/RacingAccordWebclusterUpdate.user.js
+// @updateURL    https://github.com/kiangkuang/userscripts/raw/master/RacingAccordWebClusterUpdate.user.js
+// @downloadURL  https://github.com/kiangkuang/userscripts/raw/master/RacingAccordWebClusterUpdate.user.js
 // @author       Kiang Kuang
 // @match        http://accord.coreop.net/web_root/restricted/config-req-release.aspx
 // @grant        none
+// @require      https://cdn.jsdelivr.net/npm/xml-js@1.6.11/dist/xml-js.min.js
 // ==/UserScript==
 
 (function() {
@@ -20,6 +21,9 @@
     var explorer = document.getElementById("explorer");
     explorer.onload = () => {
         explorer.contentWindow.SelectFile(atob("c2JvYmV0LmEucGxheWVyLndlYmNsdXN0ZXIuU2l0ZS50dy5jb25maWcud2ViY2x1c3Rlci1jb25maWc"));
+
+        detect(document.getElementById("configContent"), atob("Q2VudGF1cg==")); // desktop
+        detect(document.getElementById("configContent"), atob("Q2hpcm9u")); // mobile
 
         var div = document.createElement("div");
         div.style.display = "flex";
@@ -108,4 +112,18 @@ function comment(targetText) {
         return targetText;
     }
     return targetText.replace(/(\s*)(.*)/, "$1<!-- $2 -->");
+}
+
+function detect(element, project) {
+    setTimeout(() => {
+        var xml = element.value;
+        if (xml.length) {
+            var config = xml2js(xml, { compact: true });
+            var record = config.WEBCLUSTER.add.find(x => x._attributes.project === project.toLowerCase());
+            var server = record._attributes.hostname.substr(-3, 1).toUpperCase();
+            document.getElementById(`${project}${server}`).checked = true;
+        } else {
+            detect(element, project);
+        }
+    }, 1000);
 }
