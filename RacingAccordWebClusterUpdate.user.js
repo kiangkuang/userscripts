@@ -16,19 +16,23 @@
 (function() {
     "use strict";
 
+    var desktop = "Q2VudGF1cg==";
+    var mobile = "Q2hpcm9u";
+    var path = "c2JvYmV0LmEucGxheWVyLndlYmNsdXN0ZXIuU2l0ZS50dy5jb25maWcud2ViY2x1c3Rlci1jb25maWc";
+
     document.getElementById("sel_WorkOrder").value = "R4989-1";
 
     var explorer = document.getElementById("explorer");
     explorer.onload = () => {
-        explorer.contentWindow.SelectFile(atob("c2JvYmV0LmEucGxheWVyLndlYmNsdXN0ZXIuU2l0ZS50dy5jb25maWcud2ViY2x1c3Rlci1jb25maWc"));
+        explorer.contentWindow.SelectFile(atob(path));
 
-        detect(document.getElementById("configContent"), atob("Q2VudGF1cg==")); // desktop
-        detect(document.getElementById("configContent"), atob("Q2hpcm9u")); // mobile
+        detect(document.getElementById("configContent"), atob(desktop));
+        detect(document.getElementById("configContent"), atob(mobile));
 
         var div = document.createElement("div");
         div.style.display = "flex";
-        div.appendChild(createProjectRadio(atob("Q2VudGF1cg=="))); // desktop
-        div.appendChild(createProjectRadio(atob("Q2hpcm9u"))); // mobile
+        div.appendChild(createProjectRadio(atob(desktop)));
+        div.appendChild(createProjectRadio(atob(mobile)));
 
         var link = document.createElement("a");
         link.href = atob("aHR0cHM6Ly9pcm9ubWFuLmF0bGFzc2lhbi5uZXQvd2lraS9zcGFjZXMvcmFjaW5nL3BhZ2VzLzcyNjIzNzkyNC9VcGRhdGUrQ2VudGF1citDaGlyb24rV2ViK0NsdXN0ZXI=");
