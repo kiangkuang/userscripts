@@ -131,5 +131,5 @@ function detect(element, project) {
         } else {
             detect(element, project);
         }
-    }, 1000);
+    }, 100);
 }
