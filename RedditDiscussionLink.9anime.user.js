@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Reddit Discussion Link on 9anime
 // @namespace    https://github.com/kiangkuang
-// @version      0.5
+// @version      0.6
 // @description  Adds a link to Reddit discussion threads on 9anime video pages
 // @homepage     https://github.com/kiangkuang/userscripts
 // @supportURL   https://github.com/kiangkuang/userscripts/issues
@@ -17,14 +17,14 @@
 
     var $ = window.jQuery;
 
-    var e = $(`<div class="ctl" title="Reddit Discussion Thread"><i class="fab fa-reddit"></i> <span>Reddit</span></div>`);
+    var e = $(`<a href="#" target="_blank" class="ctl" title="Reddit Discussion Thread" style="color: #ababab; padding: 0 8px;"><i class="fab fa-reddit"></i> <span>Reddit</span></a>`);
     e.tooltip();
-    e.click(function() {
+    $('#controls').prepend(e);
+
+    setInterval(() => {
         var title = $('h2[itemprop="name"]').text();
         var epi = $('span[data-type="episode"]').text();
         var href = `https://www.google.com/search?btnI&q=site:reddit.com/r/anime ${title} ${epi}`;
-        window.open(href);
-    });
-
-    $('#controls').prepend(e);
+        e.attr("href", href);
+    }, 1000);
 })();
