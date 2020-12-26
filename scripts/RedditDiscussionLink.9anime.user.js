@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name         Reddit Discussion Link on 9anime
 // @namespace    https://github.com/kiangkuang/userscripts
-// @version      0.7
+// @version      0.8
 // @description  Adds a link to Reddit discussion threads on 9anime video pages
 // @author       Kiang Kuang
 // @include      *9anime.*/watch/*
 // ==/UserScript==
 
 (() => {
-  const $ = window.jQuery;
+  const $ = unsafeWindow.jQuery;
 
   const e = $('<a href="#" target="_blank" class="ctl" title="Reddit Discussion Thread" style="color: #ababab; padding: 0 8px;"><i class="fab fa-reddit"></i> <span>Reddit</span></a>');
   e.tooltip();
