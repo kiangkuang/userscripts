@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Reddit Discussion Link on 9anime
 // @namespace    https://github.com/kiangkuang/userscripts
-// @version      0.8
+// @version      0.9
 // @description  Adds a link to Reddit discussion threads on 9anime video pages
 // @author       Kiang Kuang
 // @include      *9anime.*/watch/*
@@ -17,7 +17,7 @@
   setInterval(() => {
     const title = $('h2[itemprop="name"]').text();
     const epi = $('span[data-type="episode"]').text();
-    const href = `https://www.google.com/search?btnI&q=site:reddit.com/r/anime ${title} ${epi}`;
+    const href = `https://www.google.com/search?btnI&q=site:reddit.com/r/anime ${title} ${epi} discussion`;
     e.attr('href', href);
   }, 1000);
 })();
