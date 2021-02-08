@@ -15,7 +15,7 @@
   $('#controls').prepend(e);
 
   setInterval(() => {
-    const title = $('h2[itemprop="name"]').text();
+    const title = $('h2[itemprop="name"]').text().replace('(TV)');
     const epi = $('span[data-type="episode"]').text();
     const href = `https://www.google.com/search?btnI&q=site:reddit.com/r/anime ${title} ${epi} discussion`;
     e.attr('href', href);
