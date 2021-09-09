@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Reddit Discussion Link on 9anime
 // @namespace    https://github.com/kiangkuang/userscripts
-// @version      0.10
+// @version      0.11
 // @description  Adds a link to Reddit discussion threads on 9anime video pages
 // @author       Kiang Kuang
 // @include      *9anime.*/watch/*
@@ -11,7 +11,7 @@
 (() => {
   const redirect = 'https://www.google.com/url?q=';
   if (window.location.href.startsWith(redirect)) {
-    window.location = window.location.href.replace(redirect, '');
+    window.location = new URL(window.location.href).searchParams.get('q');
   }
 
   const $ = unsafeWindow.jQuery;
