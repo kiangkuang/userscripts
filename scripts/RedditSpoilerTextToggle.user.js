@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Reddit Spoiler Text Toggle
 // @namespace    https://github.com/kiangkuang/userscripts
-// @version      0.4
+// @version      0.5
 // @description  Toggles spoiler text visibility on click
 // @author       Kiang Kuang
 // @include      https://www.reddit.com/*
@@ -18,8 +18,9 @@
     });
 
     document.querySelectorAll("a[href='/s']").forEach((x) => {
-      if (x.onclick === null) {
-        x.onclick = (e) => {
+      if (!x.redditSpoilerTextToggle) {
+        x.redditSpoilerTextToggle = true;
+        x.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
 
@@ -28,7 +29,7 @@
 
           x.title = text;
           x.textContent = spoiler;
-        };
+        });
       }
     });
   }, 1000);
