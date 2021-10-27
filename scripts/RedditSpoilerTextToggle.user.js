@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Reddit Spoiler Text Toggle
 // @namespace    https://github.com/kiangkuang/userscripts
-// @version      0.3
+// @version      0.4
 // @description  Toggles spoiler text visibility on click
 // @author       Kiang Kuang
 // @include      https://www.reddit.com/*
@@ -10,10 +10,9 @@
 (() => {
   setInterval(() => {
     document.querySelectorAll("a[href^='/s ']").forEach((x) => {
-      const match = x.getAttribute('href').match(/\/s (.+)/);
+      const match = x.getAttribute('href').match(/\/s (?<title>.+)/);
       if (match) {
-        const title = match[1];
-        x.title = title;
+        x.title = match.groups.title;
         x.href = '/s';
       }
     });
