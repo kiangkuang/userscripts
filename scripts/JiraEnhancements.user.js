@@ -1,23 +1,34 @@
 // ==UserScript==
-// @name         Jira Story Name Width
+// @name         Jira Enhancements
 // @namespace    https://github.com/kiangkuang/userscripts
-// @version      0.4
-// @description  Removes max-width css from story display in task board
+// @version      0.5
+// @description  Assortment of Jira UI enhancements
 // @author       Kiang Kuang
 // @match        https://*.atlassian.net/jira/software/projects/*/boards/*
 // ==/UserScript==
 
 (() => {
+  const LABEL_BACKGROUND = 'gold';
+  const LABEL_COLOR = 'rgba(0, 0, 0, 0.7)';
+
   const style = document.createElement('style');
   style.innerHTML = `
   [data-test-id="platform-board-kit.ui.swimlane.swimlane-content"] button {
     max-width: unset !important;
   }
-  [data-test-id="platform-card.ui.card.focus-container"] .css-4wyy7n {
-    background-color: gold !important;
+
+  [data-test-id="platform-card.ui.card.focus-container"] > div > div > div > div > span {
+    background: ${LABEL_BACKGROUND} !important;
+    color: ${LABEL_COLOR} !important;
   }
+
   [data-test-id="software-board.board"] {
     height: unset !important;
+  }
+
+  .ReactVirtualized__Grid__innerScrollContainer {
+    max-height: calc(100vh - 200px) !important;
+    overflow-y: auto !important;
   }
   `;
   document.getElementsByTagName('head')[0].appendChild(style);
