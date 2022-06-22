@@ -36,5 +36,5 @@
     overflow-y: auto !important;
   }
   `;
-  document.getElementsByTagName('head')[0].appendChild(style);
+  document.head.appendChild(style);
 })();
