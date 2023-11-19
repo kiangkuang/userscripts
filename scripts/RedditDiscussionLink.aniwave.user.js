@@ -1,21 +1,14 @@
 // ==UserScript==
-// @name         Reddit Discussion Link on 9anime
+// @name         Reddit Discussion Link on AniWave
 // @namespace    https://github.com/kiangkuang/userscripts
-// @version      1.1
-// @description  Adds a link to Reddit discussion threads on 9anime video pages
+// @version      1.2
+// @description  Adds a link to Reddit discussion threads on AniWave video pages
 // @author       Kiang Kuang
-// @include      *9anime.*/watch/*
+// @include      *aniwave.*/watch/*
 // @include      https://www.google.com/url?q=*
 // ==/UserScript==
 
 (() => {
-  /* search btnI not working
-  const redirect = 'https://www.google.com/url?q=';
-  if (window.location.href.startsWith(redirect)) {
-    window.location = new URL(window.location.href).searchParams.get('q');
-  }
-  */
-
   const $ = unsafeWindow.jQuery;
 
   const e = $('<a href="#" target="_blank" class="ctrl"><i class="fab fa-reddit"></i> Reddit</a>');
